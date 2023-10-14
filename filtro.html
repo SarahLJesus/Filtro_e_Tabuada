@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtro de Nome</title>
+
+  <style>
+    #valor-form {
+      font-size: 32px;
+      height: 100px;
+    }
+  </style>
+
+  <script>
+    function filtra() {
+      const filtro = document.getElementById("filtro").value.toLowerCase();
+      const lista = document.getElementById("lista");
+      const items = lista.getElementsByTagName("li");
+
+      for (let item of items) {
+        const nome = item.textContent.toLowerCase();
+        if (nome.includes(filtro)) {
+          item.innerHTML = nome.replace(filtro, `<strong>${filtro}</strong>`);
+        } else {
+          item.innerHTML = nome;
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form>
+    <label for="">Filtro: </label>
+    <input type="text" id="filtro" oninput="filtra();">
+  </form>
+  <ul id="lista">
+    <li>João</li>
+    <li>Claudio</li>
+    <li>Marcio</li>
+  </ul>
+</body>
+
+</html>
